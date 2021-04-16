@@ -36,9 +36,9 @@
         let textureLoader;
         let modelLoader;
 
-        let camX = 0;
-        let camY = 0.5;
-        let camZ = 0;
+        let camX = 2106;
+        let camY = 100;
+        let camZ = 400;
 
         let camXMulti = 0;
         let camYMulti = 0;
@@ -55,10 +55,10 @@
             document.body.appendChild( container );
 
             camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
-            camera.position.set(500, 500, 300 );
+            camera.position.set(0, 500, 1000*Math.PI );
 
             scene = new THREE.Scene();
-            scene.fog = new THREE.Fog( 0xcce0ff, 1, 3000 );
+            scene.fog = new THREE.Fog( 0xcce0ff, 1, 7000 );
             scene.background = new THREE.Color( 0xcce0ff );
 
             let manager = new THREE.LoadingManager();
@@ -123,6 +123,7 @@
                     object.position.z = 200;
                     object.rotation.y = 0;
                     object.scale.set(0.35,0.35,0.35);
+                    object.name = "house2";
                     render();
                 });
             });
@@ -256,32 +257,87 @@
             let intersects = raycaster.intersectObjects( objects, true );
 
             if ( intersects.length > 0 ) {
+                let objName = intersects[0].object.name;
+                console.log(objName);
                 if(!hovered)
                 {
-                    console.log("intersected");
-                    hovered = true;
+                    if(objName == "city_house_2")
+                    {
+                        console.log("intersected");
+                        hovered = true;
 
-                    let loader = new THREE.TextureLoader();
-                    let material = new THREE.MeshLambertMaterial({
-                        map: loader.load('./img/exampleImg.jpg')
-                    });
-                    material.side = THREE.DoubleSide;
-                    let geometry = new THREE.PlaneGeometry(400, 400*.75);
-                    let mesh = new THREE.Mesh(geometry, material);
-                    mesh.position.set(500,200,100)
-                    mesh.name = "image";
-                    scene.add(mesh);
+                        let loader = new THREE.TextureLoader();
+                        let material = new THREE.MeshLambertMaterial({
+                            map: loader.load('./img/exampleImg.jpg')
+                        });
+                        material.side = THREE.DoubleSide;
+                        let geometry = new THREE.PlaneGeometry(400, 400*.75);
+                        let mesh = new THREE.Mesh(geometry, material);
+                        mesh.position.set(500,200,100)
+                        mesh.name = "image";
+                        scene.add(mesh);
 
-                    let loader2 = new THREE.TextureLoader();
-                    let material2 = new THREE.MeshLambertMaterial({
-                        map: loader2.load('./img/Text.png'), transparent: true, opacity: 0.9, color: 0xFF0000
-                    });
-                    material2.side = THREE.DoubleSide;
-                    let geometry2 = new THREE.PlaneGeometry(400, 400*.75);
-                    let mesh2 = new THREE.Mesh(geometry2, material2);
-                    mesh2.position.set(-500,200,100)
-                    mesh2.name = "text";
-                    scene.add(mesh2);
+                        let loader2 = new THREE.TextureLoader();
+                        let material2 = new THREE.MeshLambertMaterial({
+                            map: loader2.load('./img/Text.png'), transparent: true, opacity: 0.9, color: 0xFF0000
+                        });
+                        material2.side = THREE.DoubleSide;
+                        let geometry2 = new THREE.PlaneGeometry(400, 400*.75);
+                        let mesh2 = new THREE.Mesh(geometry2, material2);
+                        mesh2.position.set(-500,200,100)
+                        mesh2.name = "text";
+                        scene.add(mesh2);
+                    }
+                    else if(objName.includes("calvin_hasting_paintshop_obj"))
+                    {
+                        console.log("touch");
+                        console.log("intersected");
+                        hovered = true;
+
+                        let loader = new THREE.TextureLoader();
+                        let material = new THREE.MeshLambertMaterial({
+                            map: loader.load('./img/hastings_paint.jpg')
+                        });
+                        material.side = THREE.DoubleSide;
+                        let geometry = new THREE.PlaneGeometry(500, 500*.75);
+                        let mesh = new THREE.Mesh(geometry, material);
+                        mesh.position.set(2900,200,-200)
+                        mesh.name = "image";
+                        scene.add(mesh);
+
+                        let loader2 = new THREE.TextureLoader();
+                        let material2 = new THREE.MeshLambertMaterial({
+                            map: loader2.load('./img/Hastings.png'), transparent: true, opacity: 0.9, color: 0xFF0000
+                        });
+                        material2.side = THREE.DoubleSide;
+                        let geometry2 = new THREE.PlaneGeometry(200*3, 200);
+                        let mesh2 = new THREE.Mesh(geometry2, material2);
+                        mesh2.position.set(2900,500,-200)
+                        mesh2.name = "text";
+                        scene.add(mesh2);
+
+                        let loader3 = new THREE.TextureLoader();
+                        let material3 = new THREE.MeshLambertMaterial({
+                            map: loader3.load('./img/hastings_paint_2.jpg')
+                        });
+                        material3.side = THREE.DoubleSide;
+                        let geometry3 = new THREE.PlaneGeometry(500, 500*.75);
+                        let mesh3 = new THREE.Mesh(geometry3, material3);
+                        mesh3.position.set(1200,200,-200)
+                        mesh3.name = "image2";
+                        scene.add(mesh3);
+
+                        let loader4 = new THREE.TextureLoader();
+                        let material4 = new THREE.MeshLambertMaterial({
+                            map: loader4.load('./img/Hastings_Calvin.png'), transparent: true, opacity: 0.9, color: 0xFF0000
+                        });
+                        material4.side = THREE.DoubleSide;
+                        let geometry4 = new THREE.PlaneGeometry(200*3, 200);
+                        let mesh4 = new THREE.Mesh(geometry4, material4);
+                        mesh4.position.set(1200,500,-200)
+                        mesh4.name = "text2";
+                        scene.add(mesh4);
+                    }
                 }
             }
             else
@@ -292,6 +348,10 @@
                     scene.remove( selectedObject );
                     let selectedObject2 = scene.getObjectByName("text");
                     scene.remove( selectedObject2 );
+                    let selectedObject3 = scene.getObjectByName("image2");
+                    scene.remove( selectedObject3 );
+                    let selectedObject4 = scene.getObjectByName("text2");
+                    scene.remove( selectedObject4 );
                 }
                 hovered = false;
             }
@@ -302,6 +362,7 @@
             scene.updateMatrixWorld();
             controls.target.set(camX+=(camXMulti * 15), camY, camZ+=(camYMulti * 15));
             camera.position.set(camera.position.x+=(camXMulti * 15), camera.position.y, camera.position.z+=(camYMulti * 15));
+            console.log(camera.position)
             controls.update();
             render();
         }
