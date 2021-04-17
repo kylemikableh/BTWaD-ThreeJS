@@ -67,6 +67,7 @@
 
             const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
             hemiLight.position.set( 0, 100, 0 );
+            hemiLight.castShadow = true;
             scene.add( hemiLight );
 
             const dirLight = new THREE.DirectionalLight( 0xffffff );
@@ -94,6 +95,7 @@
                     object.traverse( function ( child ) {
                         child.castShadow = true;
                     } );
+                    object.castShadow = true;
                     objects.push(object);
                     scene.add( object );
                     object.position.x = 10;
@@ -116,6 +118,7 @@
                     object.traverse( function ( child ) {
                         child.castShadow = true;
                     } );
+                    object.castShadow = true;
                     objects.push(object);
                     scene.add( object );
                     object.position.x = 1600;
@@ -137,7 +140,7 @@
 
             const groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
 
-            let mesh = new THREE.Mesh( new THREE.PlaneGeometry( 20000, 20000 ), groundMaterial );
+            let mesh = new THREE.Mesh( new THREE.PlaneGeometry( 16384, 16384 ), groundMaterial );
             mesh.position.y = 0;
             mesh.rotation.x = - Math.PI / 2;
             mesh.receiveShadow = true;
@@ -150,7 +153,7 @@
             renderer.setSize( window.innerWidth, window.innerHeight );
             renderer.outputEncoding = THREE.sRGBEncoding;
             renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            //renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
             controls = new OrbitControls( camera, renderer.domElement );
             controls.minDistance = 450;
