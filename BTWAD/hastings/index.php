@@ -49,146 +49,6 @@
         init();
         animate();
 
-        function init() {
-
-            container = document.createElement( 'div' );
-            document.body.appendChild( container );
-
-            camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
-            camera.position.set(0, 500, 1000*Math.PI );
-
-            scene = new THREE.Scene();
-            scene.fog = new THREE.Fog( 0xcce0ff, 1, 7000 );
-            scene.background = new THREE.Color( 0xcce0ff );
-
-            let manager = new THREE.LoadingManager();
-            textureLoader = new THREE.ImageLoader( manager );
-            modelLoader = new OBJLoader(manager);
-
-            const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-            hemiLight.position.set( 0, 100, 0 );
-            hemiLight.castShadow = true;
-            scene.add( hemiLight );
-
-            const dirLight = new THREE.DirectionalLight( 0xffffff );
-            dirLight.position.set( 400, 50, 0 );
-            dirLight.castShadow = true;
-            dirLight.shadow.camera.top = 50;
-            dirLight.shadow.camera.bottom = - 25;
-            dirLight.shadow.camera.left = - 25;
-            dirLight.shadow.camera.right = 25;
-            dirLight.shadow.camera.near = 0.1;
-            dirLight.shadow.camera.far = 200;
-            dirLight.shadow.mapSize.set( 1024, 1024 );
-            scene.add( dirLight );
-
-            const mtlLoader = new MTLLoader();
-            mtlLoader.setMaterialOptions( { invertTrProperty: true } );
-            mtlLoader.load('./demoFiles/threejsexamplesmall.mtl', (mtl) => {
-                mtl.preload();
-                for (const material of Object.values(mtl.materials)) {
-                    material.side = THREE.DoubleSide;
-                }
-                const objLoader = new OBJLoader(manager);
-                objLoader.setMaterials(mtl);
-                objLoader.load('./demoFiles/ThreeJSExampleSmall.obj', (object) => {
-                    object.traverse( function ( child ) {
-                        child.castShadow = true;
-                    } );
-                    object.castShadow = true;
-                    objects.push(object);
-                    scene.add( object );
-                    object.position.x = 10;
-                    object.position.y = 0;
-                    object.scale.set(25,25,25);
-                    render();
-                });
-            });
-
-            const mtlLoader2 = new MTLLoader();
-            mtlLoader2.setMaterialOptions( { invertTrProperty: true } );
-            mtlLoader2.load('./demoFiles/calvin_hasting_paintshop.mtl', (mtl) => {
-                mtl.preload();
-                for (const material of Object.values(mtl.materials)) {
-                    material.side = THREE.DoubleSide;
-                }
-                const objLoader = new OBJLoader(manager);
-                objLoader.setMaterials(mtl);
-                objLoader.load('./demoFiles/calvin_hasting_paintshop.obj', (object) => {
-                    object.traverse( function ( child ) {
-                        child.castShadow = true;
-                    } );
-                    object.castShadow = true;
-                    objects.push(object);
-                    scene.add( object );
-                    object.position.x = 1600;
-                    object.position.y = 0;
-                    object.position.z = 200;
-                    object.rotation.y = 0;
-                    object.scale.set(0.35,0.35,0.35);
-                    object.name = "house2";
-                    render();
-                });
-            });
-
-            const textLoader = new THREE.TextureLoader();
-            const groundTexture = textLoader.load('./img/grass.jpg');
-            groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
-            groundTexture.repeat.set( 25, 25 );
-            groundTexture.anisotropy = 16;
-            groundTexture.encoding = THREE.sRGBEncoding;
-
-            const groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
-
-            let mesh = new THREE.Mesh( new THREE.PlaneGeometry( 16384, 16384 ), groundMaterial );
-            mesh.position.y = 0;
-            mesh.rotation.x = - Math.PI / 2;
-            mesh.receiveShadow = true;
-            scene.add( mesh );
-
-            projector = new Projector();
-
-            renderer = new THREE.WebGLRenderer( { antialias: true } );
-            renderer.setPixelRatio( window.devicePixelRatio );
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            renderer.outputEncoding = THREE.sRGBEncoding;
-            renderer.shadowMap.enabled = true;
-            //renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-            controls = new OrbitControls( camera, renderer.domElement );
-            controls.minDistance = 450;
-            controls.maxDistance = 2000;
-            controls.enablePan = false;
-            controls.target.set(camX, camY, camZ);
-            controls.update();
-            controls.enableDamping = true;
-
-            let centerPosition = controls.target.clone();
-            centerPosition.y = 0;
-            let groundPosition = camera.position.clone();
-            groundPosition.y = 0;
-            let d = (centerPosition.distanceTo(groundPosition));
-
-            let origin = new THREE.Vector2(controls.target.y,0);
-            let remote = new THREE.Vector2(5,d);
-            let angleRadians = Math.atan2(remote.y - origin.y, remote.x - origin.x);
-            controls.maxPolarAngle = angleRadians;
-
-            container.appendChild( renderer.domElement );
-
-            document.addEventListener( 'mousemove', onDocumentMouseDown, false );
-            window.addEventListener( 'resize', onWindowResize, false );
-            document.addEventListener('keydown', logKey);
-            document.addEventListener('keyup', logKeyUp);
-
-        }
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize( window.innerWidth, window.innerHeight );
-        }
-
         //Camera Move Function
         function logKey(e) {
             e.preventDefault();
@@ -247,6 +107,139 @@
             }
         }
 
+        function loadGround() {
+            const textLoader = new THREE.TextureLoader();
+            const groundTexture = textLoader.load('./img/grass.jpg');
+            groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+            groundTexture.repeat.set( 25, 25 );
+            groundTexture.anisotropy = 16;
+            groundTexture.encoding = THREE.sRGBEncoding;
+
+            const groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
+
+            let mesh = new THREE.Mesh( new THREE.PlaneGeometry( 16384, 16384 ), groundMaterial );
+            mesh.position.y = 0;
+            mesh.rotation.x = - Math.PI / 2;
+            mesh.receiveShadow = true;
+            scene.add( mesh );
+        }
+
+        function renderHelper() {
+            projector = new Projector();
+
+            renderer = new THREE.WebGLRenderer( { antialias: true } );
+            renderer.setPixelRatio( window.devicePixelRatio );
+            camera.aspect = (window.innerWidth/2) / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize( window.innerWidth/2, window.innerHeight );
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            renderer.shadowMap.enabled = true;
+            //renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+            controls = new OrbitControls( camera, renderer.domElement );
+            controls.minDistance = 450;
+            controls.maxDistance = 2000;
+            controls.enablePan = false;
+            controls.target.set(camX, camY, camZ);
+            controls.update();
+            controls.enableDamping = true;
+
+            let centerPosition = controls.target.clone();
+            centerPosition.y = 0;
+            let groundPosition = camera.position.clone();
+            groundPosition.y = 0;
+            let d = (centerPosition.distanceTo(groundPosition));
+
+            let origin = new THREE.Vector2(controls.target.y,0);
+            let remote = new THREE.Vector2(5,d);
+            let angleRadians = Math.atan2(remote.y - origin.y, remote.x - origin.x);
+            controls.maxPolarAngle = angleRadians;
+
+            container.appendChild( renderer.domElement );
+        }
+
+        function loadModel(manager,path,objx,objy,objz,scalex,scaley,scalez,rotationy,name) {
+            const mtlLoader = new MTLLoader();
+            mtlLoader.setMaterialOptions( { invertTrProperty: true } );
+            mtlLoader.load(path + '.mtl', (mtl) => {
+                mtl.preload();
+                for (const material of Object.values(mtl.materials)) {
+                    material.side = THREE.DoubleSide;
+                }
+                const objLoader = new OBJLoader(manager);
+                objLoader.setMaterials(mtl);
+                objLoader.load(path + '.obj', (object) => {
+                    object.traverse( function ( child ) {
+                        child.castShadow = true;
+                    } );
+                    object.castShadow = true;
+                    objects.push(object);
+                    scene.add( object );
+                    object.position.x = objx;
+                    object.position.y = objy;
+                    object.position.z = objz;
+                    object.scale.set(scalex,scaley,scalez);
+                    object.rotation.y = rotationy;
+                    object.name = name;
+                    render();
+                });
+            });
+        }
+
+        function lightLoader() {
+            const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+            hemiLight.position.set( 0, 100, 0 );
+            hemiLight.castShadow = true;
+            scene.add( hemiLight );
+
+            const dirLight = new THREE.DirectionalLight( 0xffffff );
+            dirLight.position.set( 400, 50, 0 );
+            dirLight.castShadow = true;
+            dirLight.shadow.camera.top = 50;
+            dirLight.shadow.camera.bottom = - 25;
+            dirLight.shadow.camera.left = - 25;
+            dirLight.shadow.camera.right = 25;
+            dirLight.shadow.camera.near = 0.1;
+            dirLight.shadow.camera.far = 200;
+            dirLight.shadow.mapSize.set( 1024, 1024 );
+            scene.add( dirLight );
+        }
+
+        function init() {
+
+            container = document.createElement( 'div' );
+            document.body.appendChild( container );
+
+            camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
+            camera.position.set(0, 500, 1000*Math.PI );
+
+            scene = new THREE.Scene();
+            scene.fog = new THREE.Fog( 0xcce0ff, 1, 7000 );
+            scene.background = new THREE.Color( 0xcce0ff );
+
+            let manager = new THREE.LoadingManager();
+            textureLoader = new THREE.ImageLoader( manager );
+            modelLoader = new OBJLoader(manager);
+
+            lightLoader();
+            loadGround();
+            loadModel(manager,'./demoFiles/calvin_hasting_paintshop',1600,0,0,0.5,0.5,0.5,0,'house2');
+            loadModel(manager,'./demoFiles/henry_hasting_house',-3000,0,200,1.75,1.75,1.75,0,'house3');
+            renderHelper();
+
+            document.addEventListener( 'mousemove', onDocumentMouseDown, false );
+            window.addEventListener( 'resize', onWindowResize, false );
+            document.addEventListener('keydown', logKey);
+            document.addEventListener('keyup', logKeyUp);
+
+        }
+
+        function onWindowResize() {
+            camera.aspect = (window.innerWidth/2) / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize( window.innerWidth/2, window.innerHeight );
+        }
+
         let hovered = false;
 
         function onDocumentMouseDown( event ) {
@@ -269,27 +262,27 @@
                         console.log("intersected");
                         hovered = true;
 
-                        let loader = new THREE.TextureLoader();
-                        let material = new THREE.MeshLambertMaterial({
-                            map: loader.load('./img/exampleImg.jpg')
-                        });
-                        material.side = THREE.DoubleSide;
-                        let geometry = new THREE.PlaneGeometry(400, 400*.75);
-                        let mesh = new THREE.Mesh(geometry, material);
-                        mesh.position.set(500,200,100)
-                        mesh.name = "image";
-                        scene.add(mesh);
-
-                        let loader2 = new THREE.TextureLoader();
-                        let material2 = new THREE.MeshLambertMaterial({
-                            map: loader2.load('./img/Text.png'), transparent: true, opacity: 0.9, color: 0xFF0000
-                        });
-                        material2.side = THREE.DoubleSide;
-                        let geometry2 = new THREE.PlaneGeometry(400, 400*.75);
-                        let mesh2 = new THREE.Mesh(geometry2, material2);
-                        mesh2.position.set(-500,200,100)
-                        mesh2.name = "text";
-                        scene.add(mesh2);
+                        // let loader = new THREE.TextureLoader();
+                        // let material = new THREE.MeshLambertMaterial({
+                        //     map: loader.load('./img/exampleImg.jpg')
+                        // });
+                        // material.side = THREE.DoubleSide;
+                        // let geometry = new THREE.PlaneGeometry(400, 400*.75);
+                        // let mesh = new THREE.Mesh(geometry, material);
+                        // mesh.position.set(500,200,100)
+                        // mesh.name = "image";
+                        // scene.add(mesh);
+                        //
+                        // let loader2 = new THREE.TextureLoader();
+                        // let material2 = new THREE.MeshLambertMaterial({
+                        //     map: loader2.load('./img/Text.png'), transparent: true, opacity: 0.9, color: 0xFF0000
+                        // });
+                        // material2.side = THREE.DoubleSide;
+                        // let geometry2 = new THREE.PlaneGeometry(400, 400*.75);
+                        // let mesh2 = new THREE.Mesh(geometry2, material2);
+                        // mesh2.position.set(-500,200,100)
+                        // mesh2.name = "text";
+                        // scene.add(mesh2);
                     }
                     else if(objName.includes("calvin_hasting_paintshop_obj"))
                     {
@@ -297,49 +290,49 @@
                         console.log("intersected");
                         hovered = true;
 
-                        let loader = new THREE.TextureLoader();
-                        let material = new THREE.MeshLambertMaterial({
-                            map: loader.load('./img/hastings_paint.jpg')
-                        });
-                        material.side = THREE.DoubleSide;
-                        let geometry = new THREE.PlaneGeometry(500, 500*.75);
-                        let mesh = new THREE.Mesh(geometry, material);
-                        mesh.position.set(2900,200,-200)
-                        mesh.name = "image";
-                        scene.add(mesh);
-
-                        let loader2 = new THREE.TextureLoader();
-                        let material2 = new THREE.MeshLambertMaterial({
-                            map: loader2.load('./img/Hastings.png'), transparent: true, opacity: 0.9, color: 0xFF0000
-                        });
-                        material2.side = THREE.DoubleSide;
-                        let geometry2 = new THREE.PlaneGeometry(200*3, 200);
-                        let mesh2 = new THREE.Mesh(geometry2, material2);
-                        mesh2.position.set(2900,500,-200)
-                        mesh2.name = "text";
-                        scene.add(mesh2);
-
-                        let loader3 = new THREE.TextureLoader();
-                        let material3 = new THREE.MeshLambertMaterial({
-                            map: loader3.load('./img/hastings_paint_2.jpg')
-                        });
-                        material3.side = THREE.DoubleSide;
-                        let geometry3 = new THREE.PlaneGeometry(500, 500*.75);
-                        let mesh3 = new THREE.Mesh(geometry3, material3);
-                        mesh3.position.set(1200,200,-200)
-                        mesh3.name = "image2";
-                        scene.add(mesh3);
-
-                        let loader4 = new THREE.TextureLoader();
-                        let material4 = new THREE.MeshLambertMaterial({
-                            map: loader4.load('./img/Hastings_Calvin.png'), transparent: true, opacity: 0.9, color: 0xFF0000
-                        });
-                        material4.side = THREE.DoubleSide;
-                        let geometry4 = new THREE.PlaneGeometry(200*3, 200);
-                        let mesh4 = new THREE.Mesh(geometry4, material4);
-                        mesh4.position.set(1200,500,-200)
-                        mesh4.name = "text2";
-                        scene.add(mesh4);
+                        // let loader = new THREE.TextureLoader();
+                        // let material = new THREE.MeshLambertMaterial({
+                        //     map: loader.load('./img/hastings_paint.jpg')
+                        // });
+                        // material.side = THREE.DoubleSide;
+                        // let geometry = new THREE.PlaneGeometry(500, 500*.75);
+                        // let mesh = new THREE.Mesh(geometry, material);
+                        // mesh.position.set(2900,200,-200)
+                        // mesh.name = "image";
+                        // scene.add(mesh);
+                        //
+                        // let loader2 = new THREE.TextureLoader();
+                        // let material2 = new THREE.MeshLambertMaterial({
+                        //     map: loader2.load('./img/Hastings.png'), transparent: true, opacity: 0.9, color: 0xFF0000
+                        // });
+                        // material2.side = THREE.DoubleSide;
+                        // let geometry2 = new THREE.PlaneGeometry(200*3, 200);
+                        // let mesh2 = new THREE.Mesh(geometry2, material2);
+                        // mesh2.position.set(2900,500,-200)
+                        // mesh2.name = "text";
+                        // scene.add(mesh2);
+                        //
+                        // let loader3 = new THREE.TextureLoader();
+                        // let material3 = new THREE.MeshLambertMaterial({
+                        //     map: loader3.load('./img/hastings_paint_2.jpg')
+                        // });
+                        // material3.side = THREE.DoubleSide;
+                        // let geometry3 = new THREE.PlaneGeometry(500, 500*.75);
+                        // let mesh3 = new THREE.Mesh(geometry3, material3);
+                        // mesh3.position.set(1200,200,-200)
+                        // mesh3.name = "image2";
+                        // scene.add(mesh3);
+                        //
+                        // let loader4 = new THREE.TextureLoader();
+                        // let material4 = new THREE.MeshLambertMaterial({
+                        //     map: loader4.load('./img/Hastings_Calvin.png'), transparent: true, opacity: 0.9, color: 0xFF0000
+                        // });
+                        // material4.side = THREE.DoubleSide;
+                        // let geometry4 = new THREE.PlaneGeometry(200*3, 200);
+                        // let mesh4 = new THREE.Mesh(geometry4, material4);
+                        // mesh4.position.set(1200,500,-200)
+                        // mesh4.name = "text2";
+                        // scene.add(mesh4);
                     }
                 }
             }
@@ -347,14 +340,14 @@
             {
                 if(hovered)
                 {
-                    let selectedObject = scene.getObjectByName("image");
-                    scene.remove( selectedObject );
-                    let selectedObject2 = scene.getObjectByName("text");
-                    scene.remove( selectedObject2 );
-                    let selectedObject3 = scene.getObjectByName("image2");
-                    scene.remove( selectedObject3 );
-                    let selectedObject4 = scene.getObjectByName("text2");
-                    scene.remove( selectedObject4 );
+                    // let selectedObject = scene.getObjectByName("image");
+                    // scene.remove( selectedObject );
+                    // let selectedObject2 = scene.getObjectByName("text");
+                    // scene.remove( selectedObject2 );
+                    // let selectedObject3 = scene.getObjectByName("image2");
+                    // scene.remove( selectedObject3 );
+                    // let selectedObject4 = scene.getObjectByName("text2");
+                    // scene.remove( selectedObject4 );
                 }
                 hovered = false;
             }
