@@ -1,0 +1,88 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd calvin_hasting_paintshop/Translucent_Glass_Tinted.jpg
+
+newmtl Wood_Veneer_01
+Ka 0.000000 0.000000 0.000000
+Kd 0.470588 0.274510 0.145098
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/Wood_Veneer_01.jpg
+
+newmtl _Cladding_Siding_White_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/_Cladding_Siding_White_1.jpg
+
+newmtl _Cladding_Siding_White_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/_Cladding_Siding_White_2.jpg
+
+newmtl lambert1
+Ka 0.000000 0.000000 0.000000
+Kd 0.752941 0.752941 0.752941
+Ks 0.330000 0.330000 0.330000
+
+newmtl _Roofing_Shingles_Asphalt_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.407843 0.380392
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/_Roofing_Shingles_Asphalt_1.jpg
+
+newmtl _Wood_Veneer_01_3
+Ka 0.000000 0.000000 0.000000
+Kd 0.470588 0.274510 0.145098
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/_Wood_Veneer_01_3.jpg
+
+newmtl Metal_Seamed
+Ka 0.000000 0.000000 0.000000
+Kd 0.462745 0.466667 0.450980
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/Metal_Seamed.jpg
+
+newmtl _Wood_Veneer_01_4
+Ka 0.000000 0.000000 0.000000
+Kd 0.596078 0.768627 0.819608
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/_Wood_Veneer_01_4.jpg
+
+newmtl _Wood_Floor_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.662745 0.560784 0.474510
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/_Wood_Floor_1.jpg
+
+newmtl _Wood_Floor_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.243137 0.164706 0.094118
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/_Wood_Floor_2.jpg
+
+newmtl Wood_Floor
+Ka 0.000000 0.000000 0.000000
+Kd 0.870588 0.866667 0.866667
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/Wood_Floor.jpg
+
+newmtl Cladding_Siding_White
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/Cladding_Siding_White.jpg
+
+newmtl _Roofing_Shingles_Asphalt_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.407843 0.380392
+Ks 0.330000 0.330000 0.330000
+map_Kd calvin_hasting_paintshop/_Roofing_Shingles_Asphalt_2.jpg
+
