@@ -188,8 +188,7 @@ function lightLoader() {
 
 function init() {
 
-    container = document.getElementById('ThreeContainer');
-    document.body.appendChild( container );
+    container = document.getElementById('main-container');
 
     camera = new THREE.PerspectiveCamera( 70, (window.innerWidth/2) / window.innerHeight, 1, 10000 );
     camera.position.set(-1500, 0, 1000*Math.PI );

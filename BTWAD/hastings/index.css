@@ -1,3 +1,7 @@
 .main-container {
     display: flex;
 }
+
+#content {
+    order: 2;
+}
