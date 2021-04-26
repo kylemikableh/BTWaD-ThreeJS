@@ -221,6 +221,42 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth/2, window.innerHeight );
 }
 
+function moveCameraTo(id) {
+    if(id == "henry-house") {
+        camX = -1500;
+        camY = 0;
+        camZ = 0;
+    }
+    if(id == "henry-barn") {
+        camX = -3000;
+        camY = -20;
+        camZ = -7000;
+    }
+    if(id == "calvin-paint") {
+        camX = 3500;
+        camY = 0;
+        camZ = 6000;
+    }
+}
+
+function showDivWithID(id) {
+    let divs = ['henry-house', 'henry-barn', 'calvin-paint']
+    for (let i = 0; i < divs.length; i++) {
+        let temp = document.getElementById(divs[i]);
+        let tempButton = document.getElementById(divs[i] + "-button");
+        console.log(divs[i] + "-button");
+        tempButton.classList.remove("active")
+        temp.style.display = "none";
+    }
+    let x = document.getElementById(id);
+    let xButton = document.getElementById(id + "-button");
+    xButton.classList.add("active");
+    x.style.display = "block";
+    moveCameraTo(id);
+}
+
+window.showDivWithID = showDivWithID;
+
 let hovered = false;
 
 function onDocumentMouseDown( event ) {
@@ -235,19 +271,14 @@ function onDocumentMouseDown( event ) {
 
     if ( intersects.length > 0 ) {
         let objName = intersects[0].object.name;
-        console.log(objName);
         if(!hovered)
         {
-            console.log(objName);
             if(objName == "city_house_2")
             {
-                console.log("intersected");
                 hovered = true;
             }
             else if(objName.includes("calvin_hasting_paintshop_obj"))
             {
-                console.log("touch");
-                console.log("intersected");
                 hovered = true;
 
             }
@@ -275,7 +306,6 @@ function animate() {
     scene.updateMatrixWorld();
     controls.target.set(camX+=(camXMulti * 15), camY, camZ+=(camYMulti * 15));
     camera.position.set(camera.position.x+=(camXMulti * 15), camera.position.y, camera.position.z+=(camYMulti * 15));
-    console.log(camera.position)
     controls.update();
     render();
 }
