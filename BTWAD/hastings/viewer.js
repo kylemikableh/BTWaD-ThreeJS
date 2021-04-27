@@ -1,4 +1,12 @@
-
+/**
+ * Before There Was a Dam 3D model viewer using three.js
+ *
+ * By Kyle Mikolajczyk on 4/27/2021 for
+ * Degree Completion Requirement at Worcester Polytechinic Institute
+ *
+ * and help from example codes and projects linked
+ * on their functions
+ */
 import * as THREE from '../../build/three.module.js';
 
 
@@ -8,7 +16,6 @@ import {MTLLoader} from '../jsm/loaders/MTLLoader.js';
 
 import {Projector} from '../jsm/renderers/Projector.js';
 import {Water} from '../jsm/objects/Water.js';
-//import {TWEEN} from '../jsm/libs/tween.module.min';
 
 let container;
 let camera, scene, projector, renderer, water;
@@ -93,6 +100,10 @@ function logKeyUp(e) {
     }
 }
 
+/**
+ * Function to load grass texture. Code modified from and image from example Three.js project:
+ * https://threejs.org/examples/#webgl_animation_cloth
+ */
 function loadGround() {
     const textLoader = new THREE.TextureLoader();
     const groundTexture = textLoader.load('./img/grass.jpg');
@@ -110,6 +121,10 @@ function loadGround() {
     scene.add( mesh );
 }
 
+/**
+ * Function that does not allow camera to go under surface. Used from StackOverflow:
+ * https://stackoverflow.com/questions/15827074/how-do-i-put-limits-on-orbitcontrol
+ */
 function setMinCameraAngle() {
     let centerPosition = controls.target.clone();
     centerPosition.y = 0;
@@ -123,6 +138,9 @@ function setMinCameraAngle() {
     controls.maxPolarAngle = angleRadians;
 }
 
+/**
+ * Function to help render
+ */
 function renderHelper() {
     projector = new Projector();
 
@@ -133,7 +151,6 @@ function renderHelper() {
     renderer.setSize( window.innerWidth/2, window.innerHeight );
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.shadowMap.enabled = true;
-    //renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     controls = new OrbitControls( camera, renderer.domElement );
     controls.minDistance = MIN_DISTANCE;
@@ -148,6 +165,19 @@ function renderHelper() {
     container.appendChild( renderer.domElement );
 }
 
+/**
+ * Function to load a model into the scene using filename and params
+ * @param manager
+ * @param path
+ * @param objx
+ * @param objy
+ * @param objz
+ * @param scalex
+ * @param scaley
+ * @param scalez
+ * @param rotationy
+ * @param name
+ */
 function loadModel(manager,path,objx,objy,objz,scalex,scaley,scalez,rotationy,name) {
     const mtlLoader = new MTLLoader();
     mtlLoader.setMaterialOptions( { invertTrProperty: true } );
@@ -176,6 +206,10 @@ function loadModel(manager,path,objx,objy,objz,scalex,scaley,scalez,rotationy,na
     });
 }
 
+/**
+ * Used some code from the example Three.js project:
+ * https://threejs.org/examples/#webgl_shaders_ocean
+ */
 function addWater() {
     const waterGeometry = new THREE.PlaneGeometry( 32768, 32768 );
     water = new Water(
@@ -198,8 +232,12 @@ function addWater() {
     water.rotation.x = - Math.PI / 2;
     water.position.y = -5;
     scene.add( water );
+
 }
 
+/**
+ * Function to load hemisphere light and directional light
+ */
 function lightLoader() {
     const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
     hemiLight.position.set( 0, 100, 0 );
@@ -218,6 +256,9 @@ function lightLoader() {
     scene.add( dirLight );
 }
 
+/**
+ * Init function for Three.js and call helper functions
+ */
 function init() {
 
     container = document.getElementById('main-container');
@@ -253,6 +294,10 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth/2, window.innerHeight );
 }
 
+/**
+ * Function to set camera to given model id
+ * @param id
+ */
 function moveCameraTo(id) {
     if(id == "henry-house") {
         camX = -1500;
@@ -268,6 +313,10 @@ function moveCameraTo(id) {
     }
 }
 
+/**
+ * Function to show div with id and to hide all other divs
+ * @param id
+ */
 function showDivWithID(id) {
     let divs = ['henry-house', 'henry-barn', 'calvin-paint']
     for (let i = 0; i < divs.length; i++) {
@@ -288,6 +337,9 @@ window.showDivWithID = showDivWithID;
 
 let waterAbove = false;
 
+/**
+ * Function to toggle flood water
+ */
 function toggleWater() {
     waterAbove = !waterAbove;
     if(waterAbove) {
