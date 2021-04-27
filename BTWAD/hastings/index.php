@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="index.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
     <script type="module" src="viewer.js"></script>
 
     <title>BTWaD IQP</title>
@@ -26,6 +27,7 @@
                 <button id="henry-house-button" type="button" class="btn btn-primary active" onclick="showDivWithID('henry-house')">Henry C. Hastings’ House</button>
                 <button id="henry-barn-button" type="button" class="btn btn-primary" onclick="showDivWithID('henry-barn')">Henry C. Hastings’ Barn</button>
                 <button id="calvin-paint-button" type="button" class="btn btn-primary" onclick="showDivWithID('calvin-paint')">Calvin H. Hastings’ Paintshop</button>
+                <button type="button" class="btn btn-warning" onclick="toggleWater()">Toggle Water</button>
             </div>
             <div id="henry-house">
                 <div class="jumbotron jumbotron-fluid mt-2" style="padding: 1em">

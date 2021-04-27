@@ -7,10 +7,14 @@ import {OBJLoader} from '../jsm/loaders/OBJLoader.js';
 import {MTLLoader} from '../jsm/loaders/MTLLoader.js';
 
 import {Projector} from '../jsm/renderers/Projector.js';
+import {Water} from '../jsm/objects/Water.js';
+//import {TWEEN} from '../jsm/libs/tween.module.min';
 
 let container;
-let camera, scene, projector, renderer;
+let camera, scene, projector, renderer, water;
 let controls;
+
+let waterMulti = 0;
 
 let textureLoader;
 let modelLoader;
@@ -106,6 +110,19 @@ function loadGround() {
     scene.add( mesh );
 }
 
+function setMinCameraAngle() {
+    let centerPosition = controls.target.clone();
+    centerPosition.y = 0;
+    let groundPosition = camera.position.clone();
+    groundPosition.y = 0;
+    let d = (centerPosition.distanceTo(groundPosition));
+
+    let origin = new THREE.Vector2(controls.target.y,0);
+    let remote = new THREE.Vector2(5,d);
+    let angleRadians = Math.atan2(remote.y - origin.y, remote.x - origin.x);
+    controls.maxPolarAngle = angleRadians;
+}
+
 function renderHelper() {
     projector = new Projector();
 
@@ -126,16 +143,7 @@ function renderHelper() {
     controls.update();
     controls.enableDamping = true;
 
-    let centerPosition = controls.target.clone();
-    centerPosition.y = 0;
-    let groundPosition = camera.position.clone();
-    groundPosition.y = 0;
-    let d = (centerPosition.distanceTo(groundPosition));
-
-    let origin = new THREE.Vector2(controls.target.y,0);
-    let remote = new THREE.Vector2(5,d);
-    let angleRadians = Math.atan2(remote.y - origin.y, remote.x - origin.x);
-    controls.maxPolarAngle = angleRadians;
+    setMinCameraAngle();
 
     container.appendChild( renderer.domElement );
 }
@@ -166,6 +174,30 @@ function loadModel(manager,path,objx,objy,objz,scalex,scaley,scalez,rotationy,na
             render();
         });
     });
+}
+
+function addWater() {
+    const waterGeometry = new THREE.PlaneGeometry( 32768, 32768 );
+    water = new Water(
+        waterGeometry,
+        {
+            textureWidth: 512,
+            textureHeight: 512,
+            waterNormals: new THREE.TextureLoader().load( 'img/waternormals.jpg', function ( texture ) {
+
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+
+            } ),
+            sunDirection: new THREE.Vector3(),
+            sunColor: 0xffffff,
+            waterColor: 0x001e0f,
+            distortionScale: 3.7,
+            fog: scene.fog !== undefined
+        }
+    );
+    water.rotation.x = - Math.PI / 2;
+    water.position.y = -5;
+    scene.add( water );
 }
 
 function lightLoader() {
@@ -207,8 +239,8 @@ function init() {
     loadModel(manager,'./demoFiles/henry_hasting_house',-3000,-20,0,1.75,1.75,1.75,0,'house3');
     loadModel(manager,'./demoFiles/HastingsFarm',-3000,-20,-6000,1.75,1.75,1.75,0,'house4');
     renderHelper();
+    addWater();
 
-    document.addEventListener( 'mousemove', onDocumentMouseDown, false );
     window.addEventListener( 'resize', onWindowResize, false );
     document.addEventListener('keydown', logKey);
     document.addEventListener('keyup', logKeyUp);
@@ -224,17 +256,14 @@ function onWindowResize() {
 function moveCameraTo(id) {
     if(id == "henry-house") {
         camX = -1500;
-        camY = 0;
         camZ = 0;
     }
     if(id == "henry-barn") {
         camX = -3000;
-        camY = -20;
         camZ = -7000;
     }
     if(id == "calvin-paint") {
         camX = 3500;
-        camY = 0;
         camZ = 6000;
     }
 }
@@ -257,55 +286,30 @@ function showDivWithID(id) {
 
 window.showDivWithID = showDivWithID;
 
-let hovered = false;
+let waterAbove = false;
 
-function onDocumentMouseDown( event ) {
-    event.preventDefault();
-
-    let vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
-    vector.unproject(camera);
-
-    let raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-
-    let intersects = raycaster.intersectObjects( objects, true );
-
-    if ( intersects.length > 0 ) {
-        let objName = intersects[0].object.name;
-        if(!hovered)
-        {
-            if(objName == "city_house_2")
-            {
-                hovered = true;
-            }
-            else if(objName.includes("calvin_hasting_paintshop_obj"))
-            {
-                hovered = true;
-
-            }
-        }
+function toggleWater() {
+    waterAbove = !waterAbove;
+    if(waterAbove) {
+        waterMulti = 1;
+        camY = 500;
     }
-    else
-    {
-        if(hovered)
-        {
-            // let selectedObject = scene.getObjectByName("image");
-            // scene.remove( selectedObject );
-            // let selectedObject2 = scene.getObjectByName("text");
-            // scene.remove( selectedObject2 );
-            // let selectedObject3 = scene.getObjectByName("image2");
-            // scene.remove( selectedObject3 );
-            // let selectedObject4 = scene.getObjectByName("text2");
-            // scene.remove( selectedObject4 );
-        }
-        hovered = false;
+    else {
+        waterMulti = -1;
+        camY = 0;
     }
 }
+
+window.toggleWater = toggleWater;
 
 function animate() {
     requestAnimationFrame( animate );
     scene.updateMatrixWorld();
     controls.target.set(camX+=(camXMulti * 15), camY, camZ+=(camYMulti * 15));
     camera.position.set(camera.position.x+=(camXMulti * 15), camera.position.y, camera.position.z+=(camYMulti * 15));
+    water.position.y = water.position.y + waterMulti;
+    if(water.position.y > 500){waterMulti = 0;}
+    if(water.position.y < -5){waterMulti = 0;}
     controls.update();
     render();
 }
