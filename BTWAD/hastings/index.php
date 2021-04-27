@@ -2,378 +2,79 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Before There Was a Dam ">
+    <meta name="description" content="Before There Was a Dam -- The Hastings Family.">
     <meta name="keywords" content="Placeholder">
     <meta name="author" content="Kyle Mikolajczyk">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta property="og:title" content="BTWaD IQP" />
-    <meta property="og:description" content="Before There Was a Dam | Interactive 3D Models">
-    <meta property="og:image" content="./img/exampleImg.jpg" />
+    <meta property="og:description" content="Before There Was a Dam | Interactive 3D Models of the Hastings Family">
+    <meta property="og:image" content="./img/hastings_barn.jpg" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="demo.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
 
-    <title>BTWaD IQP</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+    <script type="module" src="viewer.js"></script>
+
+    <title>Hastings | BTWAD</title>
 </head>
 <body>
-<div class="container" id="ThreeContainer">
-    <script type="module">
-
-        import * as THREE from '../../build/three.module.js';
-
-
-        import { OrbitControls } from '../jsm/controls/OrbitControls.js';
-        import {OBJLoader} from '../jsm/loaders/OBJLoader.js';
-        import {MTLLoader} from '../jsm/loaders/MTLLoader.js';
-
-        import {Projector} from '../jsm/renderers/Projector.js';
-
-        let container;
-        let camera, scene, projector, renderer;
-        let controls;
-
-        let textureLoader;
-        let modelLoader;
-
-        let camX = 2106;
-        let camY = 100;
-        let camZ = 400;
-
-        let camXMulti = 0;
-        let camYMulti = 0;
-        let camZMulti = 0;
-
-        let objects = [];
-
-        init();
-        animate();
-
-        function init() {
-
-            container = document.createElement( 'div' );
-            document.body.appendChild( container );
-
-            camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
-            camera.position.set(0, 500, 1000*Math.PI );
-
-            scene = new THREE.Scene();
-            scene.fog = new THREE.Fog( 0xcce0ff, 1, 7000 );
-            scene.background = new THREE.Color( 0xcce0ff );
-
-            let manager = new THREE.LoadingManager();
-            textureLoader = new THREE.ImageLoader( manager );
-            modelLoader = new OBJLoader(manager);
-
-            const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-            hemiLight.position.set( 0, 100, 0 );
-            hemiLight.castShadow = true;
-            scene.add( hemiLight );
-
-            const dirLight = new THREE.DirectionalLight( 0xffffff );
-            dirLight.position.set( 400, 50, 0 );
-            dirLight.castShadow = true;
-            dirLight.shadow.camera.top = 50;
-            dirLight.shadow.camera.bottom = - 25;
-            dirLight.shadow.camera.left = - 25;
-            dirLight.shadow.camera.right = 25;
-            dirLight.shadow.camera.near = 0.1;
-            dirLight.shadow.camera.far = 200;
-            dirLight.shadow.mapSize.set( 1024, 1024 );
-            scene.add( dirLight );
-
-            const mtlLoader = new MTLLoader();
-            mtlLoader.setMaterialOptions( { invertTrProperty: true } );
-            mtlLoader.load('./demoFiles/threejsexamplesmall.mtl', (mtl) => {
-                mtl.preload();
-                for (const material of Object.values(mtl.materials)) {
-                    material.side = THREE.DoubleSide;
-                }
-                const objLoader = new OBJLoader(manager);
-                objLoader.setMaterials(mtl);
-                objLoader.load('./demoFiles/ThreeJSExampleSmall.obj', (object) => {
-                    object.traverse( function ( child ) {
-                        child.castShadow = true;
-                    } );
-                    object.castShadow = true;
-                    objects.push(object);
-                    scene.add( object );
-                    object.position.x = 10;
-                    object.position.y = 0;
-                    object.scale.set(25,25,25);
-                    render();
-                });
-            });
-
-            const mtlLoader2 = new MTLLoader();
-            mtlLoader2.setMaterialOptions( { invertTrProperty: true } );
-            mtlLoader2.load('./demoFiles/calvin_hasting_paintshop.mtl', (mtl) => {
-                mtl.preload();
-                for (const material of Object.values(mtl.materials)) {
-                    material.side = THREE.DoubleSide;
-                }
-                const objLoader = new OBJLoader(manager);
-                objLoader.setMaterials(mtl);
-                objLoader.load('./demoFiles/calvin_hasting_paintshop.obj', (object) => {
-                    object.traverse( function ( child ) {
-                        child.castShadow = true;
-                    } );
-                    object.castShadow = true;
-                    objects.push(object);
-                    scene.add( object );
-                    object.position.x = 1600;
-                    object.position.y = 0;
-                    object.position.z = 200;
-                    object.rotation.y = 0;
-                    object.scale.set(0.35,0.35,0.35);
-                    object.name = "house2";
-                    render();
-                });
-            });
-
-            const textLoader = new THREE.TextureLoader();
-            const groundTexture = textLoader.load('./img/grass.jpg');
-            groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
-            groundTexture.repeat.set( 25, 25 );
-            groundTexture.anisotropy = 16;
-            groundTexture.encoding = THREE.sRGBEncoding;
-
-            const groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
-
-            let mesh = new THREE.Mesh( new THREE.PlaneGeometry( 16384, 16384 ), groundMaterial );
-            mesh.position.y = 0;
-            mesh.rotation.x = - Math.PI / 2;
-            mesh.receiveShadow = true;
-            scene.add( mesh );
-
-            projector = new Projector();
-
-            renderer = new THREE.WebGLRenderer( { antialias: true } );
-            renderer.setPixelRatio( window.devicePixelRatio );
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            renderer.outputEncoding = THREE.sRGBEncoding;
-            renderer.shadowMap.enabled = true;
-            //renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-            controls = new OrbitControls( camera, renderer.domElement );
-            controls.minDistance = 450;
-            controls.maxDistance = 2000;
-            controls.enablePan = false;
-            controls.target.set(camX, camY, camZ);
-            controls.update();
-            controls.enableDamping = true;
-
-            let centerPosition = controls.target.clone();
-            centerPosition.y = 0;
-            let groundPosition = camera.position.clone();
-            groundPosition.y = 0;
-            let d = (centerPosition.distanceTo(groundPosition));
-
-            let origin = new THREE.Vector2(controls.target.y,0);
-            let remote = new THREE.Vector2(5,d);
-            let angleRadians = Math.atan2(remote.y - origin.y, remote.x - origin.x);
-            controls.maxPolarAngle = angleRadians;
-
-            container.appendChild( renderer.domElement );
-
-            document.addEventListener( 'mousemove', onDocumentMouseDown, false );
-            window.addEventListener( 'resize', onWindowResize, false );
-            document.addEventListener('keydown', logKey);
-            document.addEventListener('keyup', logKeyUp);
-
-        }
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize( window.innerWidth, window.innerHeight );
-        }
-
-        //Camera Move Function
-        function logKey(e) {
-            e.preventDefault();
-            let key = e.keyCode;
-            const left = 37;
-            const right = 39;
-            const up = 38;
-            const down = 40;
-
-            switch (key) {
-                case left:
-                    console.log("LEFT");
-                    camXMulti = -1;
-                    break;
-                case right:
-                    console.log("RIGHT");
-                    camXMulti = 1;
-                    break;
-                case up:
-                    console.log("UP");
-                    camYMulti = -1;
-                    break;
-                case down:
-                    console.log("DOWN");
-                    camYMulti = 1;
-                    break;
-            }
-        }
-
-        //Key up
-        function logKeyUp(e) {
-            e.preventDefault();
-            let key = e.keyCode;
-            const left = 37;
-            const right = 39;
-            const up = 38;
-            const down = 40;
-
-            switch (key) {
-                case left:
-                    console.log("LEFT");
-                    camXMulti = 0;
-                    break;
-                case right:
-                    console.log("RIGHT");
-                    camXMulti = 0;
-                    break;
-                case up:
-                    console.log("UP");
-                    camYMulti = 0;
-                    break;
-                case down:
-                    console.log("DOWN");
-                    camYMulti = 0;
-                    break;
-            }
-        }
-
-        let hovered = false;
-
-        function onDocumentMouseDown( event ) {
-            event.preventDefault();
-
-            let vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
-            vector.unproject(camera);
-
-            let raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-
-            let intersects = raycaster.intersectObjects( objects, true );
-
-            if ( intersects.length > 0 ) {
-                let objName = intersects[0].object.name;
-                console.log(objName);
-                if(!hovered)
-                {
-                    if(objName == "city_house_2")
-                    {
-                        console.log("intersected");
-                        hovered = true;
-
-                        let loader = new THREE.TextureLoader();
-                        let material = new THREE.MeshLambertMaterial({
-                            map: loader.load('./img/exampleImg.jpg')
-                        });
-                        material.side = THREE.DoubleSide;
-                        let geometry = new THREE.PlaneGeometry(400, 400*.75);
-                        let mesh = new THREE.Mesh(geometry, material);
-                        mesh.position.set(500,200,100)
-                        mesh.name = "image";
-                        scene.add(mesh);
-
-                        let loader2 = new THREE.TextureLoader();
-                        let material2 = new THREE.MeshLambertMaterial({
-                            map: loader2.load('./img/Text.png'), transparent: true, opacity: 0.9, color: 0xFF0000
-                        });
-                        material2.side = THREE.DoubleSide;
-                        let geometry2 = new THREE.PlaneGeometry(400, 400*.75);
-                        let mesh2 = new THREE.Mesh(geometry2, material2);
-                        mesh2.position.set(-500,200,100)
-                        mesh2.name = "text";
-                        scene.add(mesh2);
-                    }
-                    else if(objName.includes("calvin_hasting_paintshop_obj"))
-                    {
-                        console.log("touch");
-                        console.log("intersected");
-                        hovered = true;
-
-                        let loader = new THREE.TextureLoader();
-                        let material = new THREE.MeshLambertMaterial({
-                            map: loader.load('./img/hastings_paint.jpg')
-                        });
-                        material.side = THREE.DoubleSide;
-                        let geometry = new THREE.PlaneGeometry(500, 500*.75);
-                        let mesh = new THREE.Mesh(geometry, material);
-                        mesh.position.set(2900,200,-200)
-                        mesh.name = "image";
-                        scene.add(mesh);
-
-                        let loader2 = new THREE.TextureLoader();
-                        let material2 = new THREE.MeshLambertMaterial({
-                            map: loader2.load('./img/Hastings.png'), transparent: true, opacity: 0.9, color: 0xFF0000
-                        });
-                        material2.side = THREE.DoubleSide;
-                        let geometry2 = new THREE.PlaneGeometry(200*3, 200);
-                        let mesh2 = new THREE.Mesh(geometry2, material2);
-                        mesh2.position.set(2900,500,-200)
-                        mesh2.name = "text";
-                        scene.add(mesh2);
-
-                        let loader3 = new THREE.TextureLoader();
-                        let material3 = new THREE.MeshLambertMaterial({
-                            map: loader3.load('./img/hastings_paint_2.jpg')
-                        });
-                        material3.side = THREE.DoubleSide;
-                        let geometry3 = new THREE.PlaneGeometry(500, 500*.75);
-                        let mesh3 = new THREE.Mesh(geometry3, material3);
-                        mesh3.position.set(1200,200,-200)
-                        mesh3.name = "image2";
-                        scene.add(mesh3);
-
-                        let loader4 = new THREE.TextureLoader();
-                        let material4 = new THREE.MeshLambertMaterial({
-                            map: loader4.load('./img/Hastings_Calvin.png'), transparent: true, opacity: 0.9, color: 0xFF0000
-                        });
-                        material4.side = THREE.DoubleSide;
-                        let geometry4 = new THREE.PlaneGeometry(200*3, 200);
-                        let mesh4 = new THREE.Mesh(geometry4, material4);
-                        mesh4.position.set(1200,500,-200)
-                        mesh4.name = "text2";
-                        scene.add(mesh4);
-                    }
-                }
-            }
-            else
-            {
-                if(hovered)
-                {
-                    let selectedObject = scene.getObjectByName("image");
-                    scene.remove( selectedObject );
-                    let selectedObject2 = scene.getObjectByName("text");
-                    scene.remove( selectedObject2 );
-                    let selectedObject3 = scene.getObjectByName("image2");
-                    scene.remove( selectedObject3 );
-                    let selectedObject4 = scene.getObjectByName("text2");
-                    scene.remove( selectedObject4 );
-                }
-                hovered = false;
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame( animate );
-            scene.updateMatrixWorld();
-            controls.target.set(camX+=(camXMulti * 15), camY, camZ+=(camYMulti * 15));
-            camera.position.set(camera.position.x+=(camXMulti * 15), camera.position.y, camera.position.z+=(camYMulti * 15));
-            console.log(camera.position)
-            controls.update();
-            render();
-        }
-
-        function render() {
-            renderer.render( scene, camera );
-        }
-    </script>
-</div>
+    <div style="position: fixed;left: 10px;top: 10px;">
+        <button type="button" class="btn btn-danger" onclick="location.href='https://beforetherewasadam.com';">Back To Page</button>
+    </div>
+    <div style="position: fixed;left: 10px;bottom: 10px;color: azure;line-height: 0.3em;">
+        <p>Click and Drag to move around</p>
+        <p>Use scroll wheel/pinch to zoom</p>
+    </div>
+    <div class="main-container" id="main-container">
+        <div id="content" class="container" style="overflow:auto;height: 100vh;">
+            <h1>The Hastings Family</h1>
+            <div class="mt-2">
+                <button id="henry-house-button" type="button" class="btn btn-primary active" onclick="showDivWithID('henry-house')">Henry C. Hastings’ House</button>
+                <button id="henry-barn-button" type="button" class="btn btn-primary" onclick="showDivWithID('henry-barn')">Henry C. Hastings’ Barn</button>
+                <button id="calvin-paint-button" type="button" class="btn btn-primary" onclick="showDivWithID('calvin-paint')">Calvin H. Hastings’ Paintshop</button>
+                <button type="button" class="btn btn-warning" onclick="toggleWater()">Toggle Town Flood</button>
+            </div>
+            <div id="henry-house">
+                <div class="jumbotron jumbotron-fluid mt-2" style="padding: 1em">
+                    <div class="container">
+                        <h1 class="display-5">Henry C. Hastings’ House</h1>
+                        <p class="lead">Henry was born in 1820, and married Polly Fairbanks in 1843. He is the son of Jonathan Jr. and Polly Hastings. They had three children: Marathon Ann, Waldo Henry, and Calvin Henry Hastings.<sup>1</sup>
+                            <br>Henry inherited his farm, his property and farm from his father Jonathan Hastings. He had two kids Martha and Calvin, Martha would marry Henry L. Reed. Both attended the local school in their younger years.<sup>2</sup>
+                        </p>
+                        <a href="https://ark.digitalcommonwealth.org/ark:/50959/kd17cs977" target="_blank"><img src="./img/hastings_house.jpg" class="img-fluid" alt="Hastings House"></a>
+                        <p><sup>1</sup>Lydia Nelson Hastings Buckminster, The Hastings Memorial : a genealogical account of the descendants of Thomas Hastings of Watertown, Mass. from 1634 to 1864 (Boston: Samuel G. Drake, 1866).
+                        </p>
+                        <p><sup>2</sup>Bruce Filgate, Boylston Historical Series, no. 1-14 (Boylston: The Boylston Historical Society, 2012).
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="henry-barn" style="display: none;">
+                <div class="jumbotron jumbotron-fluid mt-2" style="padding: 1em">
+                    <div class="container">
+                        <h1 class="display-5">Henry C. Hastings’ Barn</h1>
+                        <a href="https://ark.digitalcommonwealth.org/ark:/50959/st74cv79z" target="_blank"><img src="./img/hastings_barn.jpg" class="img-fluid" alt="Hastings Barn" loading="lazy"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="calvin-paint" style="display: none;">
+                <div class="jumbotron jumbotron-fluid mt-2" style="padding: 1em">
+                    <div class="container">
+                        <h1 class="display-5">Calvin H. Hastings’ Paintshop</h1>
+                        <p class="lead">Calvin was born in 1854 and married Cora Isabelle Carter in 1879.<sup>3</sup>
+                            <br>Calvin, the son of Henry Hastings, established a wagon and carriage painting shop across from his father’s property. There was a young boy named Bradbury Foss who lived with Calvin, and he went to the local school and helped him with the business. When Calvin’s property was finally taken, he moved to Clinton and reopened and rebuilt his business.<sup>4</sup>
+                        </p>
+                        <a href="https://ark.digitalcommonwealth.org/ark:/50959/st74cv83j" target="_blank"><img src="./img/hastings_paint.jpg" class="img-fluid" alt="Hastings Paintshop" loading="lazy"></a>
+                        <p><sup>3</sup><a href="https://www.findagrave.com/memorial/62088850/calvin-henry-hastings" target="_blank">“Calvin Henry Hastings,” Find A Grave.</a>
+                        </p>
+                        <p><sup>4</sup>Bruce Filgate, Boylston Historical Series, no. 1-14 (Boylston: The Boylston Historical Society, 2012).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

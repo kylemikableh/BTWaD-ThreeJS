@@ -1,0 +1,40 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Cladding_Weathered
+Ka 0.000000 0.000000 0.000000
+Kd 0.968627 0.968627 0.968627
+Ks 0.330000 0.330000 0.330000
+map_Kd HastingsFarm/Cladding_Weathered.jpg
+
+newmtl Roofing_Shingles_GAF_Estates
+Ka 0.000000 0.000000 0.000000
+Kd 0.317647 0.301961 0.290196
+Ks 0.330000 0.330000 0.330000
+map_Kd HastingsFarm/Roofing_Shingles_GAF_Estates.jpg
+
+newmtl lambert1
+Ka 0.000000 0.000000 0.000000
+Kd 0.752941 0.752941 0.752941
+Ks 0.330000 0.330000 0.330000
+
+newmtl Wood_Floor
+Ka 0.000000 0.000000 0.000000
+Kd 0.882353 0.878431 0.870588
+Ks 0.330000 0.330000 0.330000
+map_Kd HastingsFarm/Wood_Floor.jpg
+
+newmtl _Cladding_Weathered_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.756863 0.749020 0.741176
+Ks 0.330000 0.330000 0.330000
+map_Kd HastingsFarm/_Cladding_Weathered_1.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd HastingsFarm/Translucent_Glass_Tinted.jpg
+
