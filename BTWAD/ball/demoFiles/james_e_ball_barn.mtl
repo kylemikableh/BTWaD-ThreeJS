@@ -1,0 +1,35 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Cladding_Weathered
+Ka 0.000000 0.000000 0.000000
+Kd 0.737255 0.713725 0.698039
+Ks 0.330000 0.330000 0.330000
+map_Kd james_e_ball_barn/Cladding_Weathered.jpg
+
+newmtl Roofing_Shingles_Variable
+Ka 0.000000 0.000000 0.000000
+Kd 0.627451 0.603922 0.588235
+Ks 0.330000 0.330000 0.330000
+map_Kd james_e_ball_barn/Roofing_Shingles_Variable.jpg
+
+newmtl _Cladding_Weathered_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.933333 0.925490 0.921569
+Ks 0.330000 0.330000 0.330000
+map_Kd james_e_ball_barn/_Cladding_Weathered_1.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd james_e_ball_barn/Translucent_Glass_Tinted.jpg
+
+newmtl Steel_Brushed_Stainless
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.462745 0.482353
+Ks 0.330000 0.330000 0.330000
+map_Kd james_e_ball_barn/Steel_Brushed_Stainless.jpg
+

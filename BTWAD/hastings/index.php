@@ -21,7 +21,7 @@
 </head>
 <body>
     <div style="position: fixed;left: 10px;top: 10px;">
-        <button type="button" class="btn btn-danger" onclick="location.href='https://beforetherewasadam.com';">Back To Page</button>
+        <button type="button" class="btn btn-danger" onclick="location.href='https://www.beforetherewasadam.com/hastings';">Back To Page</button>
     </div>
     <div style="position: fixed;left: 10px;bottom: 10px;color: azure;line-height: 0.3em;">
         <p>Click and Drag to move around</p>
