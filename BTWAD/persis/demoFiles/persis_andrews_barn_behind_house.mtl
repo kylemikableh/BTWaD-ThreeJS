@@ -1,0 +1,46 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Brick_Tumbled
+Ka 0.000000 0.000000 0.000000
+Kd 0.529412 0.517647 0.517647
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_barn_behind_house/Brick_Tumbled.jpg
+
+newmtl Roofing_Shingles_Multi
+Ka 0.000000 0.000000 0.000000
+Kd 0.521569 0.517647 0.513725
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_barn_behind_house/Roofing_Shingles_Multi.jpg
+
+newmtl Cladding_Weathered
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_barn_behind_house/Cladding_Weathered.jpg
+
+newmtl initialShadingGroup
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.498039 0.498039
+Ks 0.330000 0.330000 0.330000
+
+newmtl _Cladding_Weathered_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.329412 0.309804 0.286275
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_barn_behind_house/_Cladding_Weathered_1.jpg
+
+newmtl Steel_Brushed_Stainless
+Ka 0.000000 0.000000 0.000000
+Kd 0.717647 0.733333 0.745098
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_barn_behind_house/Steel_Brushed_Stainless.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd persis_andrews_barn_behind_house/Translucent_Glass_Tinted.jpg
+
