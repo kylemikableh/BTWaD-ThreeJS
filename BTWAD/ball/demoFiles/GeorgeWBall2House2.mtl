@@ -1,0 +1,64 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl _Wood_Floor_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.905882 0.898039 0.890196
+Ks 0.330000 0.330000 0.330000
+map_Kd GeorgeWBall2House2/_Wood_Floor_1.jpg
+
+newmtl Concrete_Aggregate_Smoke
+Ka 0.000000 0.000000 0.000000
+Kd 0.686275 0.674510 0.670588
+Ks 0.330000 0.330000 0.330000
+map_Kd GeorgeWBall2House2/Concrete_Aggregate_Smoke.jpg
+
+newmtl Brick_Tumbled
+Ka 0.000000 0.000000 0.000000
+Kd 0.529412 0.517647 0.517647
+Ks 0.330000 0.330000 0.330000
+map_Kd GeorgeWBall2House2/Brick_Tumbled.jpg
+
+newmtl Wood_Floor
+Ka 0.000000 0.000000 0.000000
+Kd 0.200000 0.137255 0.074510
+Ks 0.330000 0.330000 0.330000
+map_Kd GeorgeWBall2House2/Wood_Floor.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd GeorgeWBall2House2/Translucent_Glass_Tinted.jpg
+
+newmtl Steel_Brushed_Stainless
+Ka 0.000000 0.000000 0.000000
+Kd 0.717647 0.733333 0.745098
+Ks 0.330000 0.330000 0.330000
+map_Kd GeorgeWBall2House2/Steel_Brushed_Stainless.jpg
+
+newmtl Translucent_Glass_Gray
+Ka 0.000000 0.000000 0.000000
+Kd 0.356863 0.356863 0.356863
+Ks 0.330000 0.330000 0.330000
+d 0.950000
+
+newmtl Cladding_Siding_White
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd GeorgeWBall2House2/Cladding_Siding_White.jpg
+
+newmtl initialShadingGroup
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.498039 0.498039
+Ks 0.330000 0.330000 0.330000
+
+newmtl Roofing_Shingles_Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.552941 0.513725 0.505882
+Ks 0.330000 0.330000 0.330000
+map_Kd GeorgeWBall2House2/Roofing_Shingles_Asphalt.jpg
+

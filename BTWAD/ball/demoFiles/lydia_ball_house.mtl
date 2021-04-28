@@ -1,0 +1,70 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Wood_Floor
+Ka 0.000000 0.000000 0.000000
+Kd 0.682353 0.654902 0.572549
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/Wood_Floor.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd lydia_ball_house/Translucent_Glass_Tinted.jpg
+
+newmtl Cladding_Siding_White
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/Cladding_Siding_White.jpg
+
+newmtl lambert1
+Ka 0.000000 0.000000 0.000000
+Kd 0.752941 0.752941 0.752941
+Ks 0.330000 0.330000 0.330000
+
+newmtl Roofing_Shingles_Multi
+Ka 0.000000 0.000000 0.000000
+Kd 0.533333 0.498039 0.490196
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/Roofing_Shingles_Multi.jpg
+
+newmtl _Cladding_Siding_White_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.682353 0.654902 0.572549
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/_Cladding_Siding_White_1.jpg
+
+newmtl Cladding_Weathered
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/Cladding_Weathered.jpg
+
+newmtl _Wood_Floor_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.247059 0.235294 0.188235
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/_Wood_Floor_1.jpg
+
+newmtl _Wood_Floor_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.937255 0.933333 0.917647
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/_Wood_Floor_2.jpg
+
+newmtl Brick_Tumbled
+Ka 0.000000 0.000000 0.000000
+Kd 0.529412 0.517647 0.517647
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/Brick_Tumbled.jpg
+
+newmtl Steel_Brushed_Stainless
+Ka 0.000000 0.000000 0.000000
+Kd 0.717647 0.733333 0.745098
+Ks 0.330000 0.330000 0.330000
+map_Kd lydia_ball_house/Steel_Brushed_Stainless.jpg
+
