@@ -1,0 +1,58 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl _Wood_Floor_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.184314 0.125490 0.070588
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_house/_Wood_Floor_1.jpg
+
+newmtl Wood_Floor
+Ka 0.000000 0.000000 0.000000
+Kd 0.988235 0.988235 0.988235
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_house/Wood_Floor.jpg
+
+newmtl Steel_Brushed_Stainless
+Ka 0.000000 0.000000 0.000000
+Kd 0.717647 0.733333 0.745098
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_house/Steel_Brushed_Stainless.jpg
+
+newmtl initialShadingGroup
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.498039 0.498039
+Ks 0.330000 0.330000 0.330000
+
+newmtl Roofing_Shingles_Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.407843 0.380392
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_house/Roofing_Shingles_Asphalt.jpg
+
+newmtl Cladding_Siding_White
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_house/Cladding_Siding_White.jpg
+
+newmtl _Cladding_Siding_White_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_house/_Cladding_Siding_White_1.jpg
+
+newmtl Brick_Tumbled
+Ka 0.000000 0.000000 0.000000
+Kd 0.529412 0.517647 0.517647
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_house/Brick_Tumbled.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd george_murrmann_house/Translucent_Glass_Tinted.jpg
+

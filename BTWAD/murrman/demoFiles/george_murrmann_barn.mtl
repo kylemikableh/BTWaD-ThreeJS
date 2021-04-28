@@ -1,0 +1,34 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Roofing_Shingles_Multi
+Ka 0.000000 0.000000 0.000000
+Kd 0.525490 0.501961 0.494118
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_barn/Roofing_Shingles_Multi.jpg
+
+newmtl Cladding_Weathered
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_barn/Cladding_Weathered.jpg
+
+newmtl initialShadingGroup
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.498039 0.498039
+Ks 0.330000 0.330000 0.330000
+
+newmtl _Cladding_Weathered_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.278431 0.262745 0.239216
+Ks 0.330000 0.330000 0.330000
+map_Kd george_murrmann_barn/_Cladding_Weathered_1.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd george_murrmann_barn/Translucent_Glass_Tinted.jpg
+
