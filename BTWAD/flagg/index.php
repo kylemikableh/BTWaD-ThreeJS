@@ -9,7 +9,7 @@
 
     <meta property="og:title" content="BTWaD IQP" />
     <meta property="og:description" content="Before There Was a Dam | Interactive 3D Models of the Flagg Family">
-    <meta property="og:image" content="./img/hastings_barn.jpg" />
+    <meta property="og:image" content="./img/flagg_house.jpg" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="index.css">
