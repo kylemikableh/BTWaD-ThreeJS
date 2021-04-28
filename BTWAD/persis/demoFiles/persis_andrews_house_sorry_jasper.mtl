@@ -1,0 +1,52 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl initialShadingGroup
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.498039 0.498039
+Ks 0.330000 0.330000 0.330000
+
+newmtl Roofing_Shingles_Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.407843 0.380392
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_house_sorry_jasper/Roofing_Shingles_Asphalt.jpg
+
+newmtl Cladding_Siding_White
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_house_sorry_jasper/Cladding_Siding_White.jpg
+
+newmtl Brick_Tumbled
+Ka 0.000000 0.000000 0.000000
+Kd 0.529412 0.517647 0.517647
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_house_sorry_jasper/Brick_Tumbled.jpg
+
+newmtl Wood_Floor
+Ka 0.000000 0.000000 0.000000
+Kd 0.898039 0.898039 0.898039
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_house_sorry_jasper/Wood_Floor.jpg
+
+newmtl _Wood_Floor_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.415686 0.400000
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_house_sorry_jasper/_Wood_Floor_2.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd persis_andrews_house_sorry_jasper/Translucent_Glass_Tinted.jpg
+
+newmtl _Wood_Floor_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.098039 0.066667 0.039216
+Ks 0.330000 0.330000 0.330000
+map_Kd persis_andrews_house_sorry_jasper/_Wood_Floor_1.jpg
+
