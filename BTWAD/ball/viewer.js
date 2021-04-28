@@ -278,7 +278,7 @@ function init() {
     loadGround();
     loadModel(manager,'./demoFiles/george_ball_barn',3000,0,6000,2,2,2,0,'house2');
     loadModel(manager,'./demoFiles/GeorgeWBall2House2',-3000,-20,0,2,2,2,0,'house3');
-    loadModel(manager,'./demoFiles/james_e_ball_barn',-3000,-20,-6000,2,2,2,0,'house4');
+    loadModel(manager,'./demoFiles/james_e_ball_barn',-3000,-150,-6000,2,2,2,0,'house4');
     loadModel(manager,'./demoFiles/lydia_ball_house',0,-20,-3000,2,2,2,0,'house5');
     renderHelper();
     addWater();
