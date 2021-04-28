@@ -1,0 +1,40 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Brick_Tumbled
+Ka 0.000000 0.000000 0.000000
+Kd 0.529412 0.517647 0.517647
+Ks 0.330000 0.330000 0.330000
+map_Kd george_flagg_house/Brick_Tumbled.jpg
+
+newmtl _Cladding_Weathered_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd george_flagg_house/_Cladding_Weathered_2.jpg
+
+newmtl Roofing_Shingles_Variable
+Ka 0.000000 0.000000 0.000000
+Kd 0.431373 0.427451 0.423529
+Ks 0.330000 0.330000 0.330000
+map_Kd george_flagg_house/Roofing_Shingles_Variable.jpg
+
+newmtl lambert1
+Ka 0.000000 0.000000 0.000000
+Kd 0.752941 0.752941 0.752941
+Ks 0.330000 0.330000 0.330000
+
+newmtl _Cladding_Weathered_3
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd george_flagg_house/_Cladding_Weathered_3.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd george_flagg_house/Translucent_Glass_Tinted.jpg
+
