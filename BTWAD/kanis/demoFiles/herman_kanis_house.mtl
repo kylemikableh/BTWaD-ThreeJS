@@ -1,0 +1,64 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Cladding_Siding_White
+Ka 0.000000 0.000000 0.000000
+Kd 0.811765 0.811765 0.811765
+Ks 0.330000 0.330000 0.330000
+map_Kd herman_kanis_house/Cladding_Siding_White.jpg
+
+newmtl lambert1
+Ka 0.000000 0.000000 0.000000
+Kd 0.752941 0.752941 0.752941
+Ks 0.330000 0.330000 0.330000
+
+newmtl Roofing_Shingles_Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.415686 0.407843 0.396078
+Ks 0.330000 0.330000 0.330000
+map_Kd herman_kanis_house/Roofing_Shingles_Asphalt.jpg
+
+newmtl _Wood_Floor_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.125490 0.086275 0.047059
+Ks 0.330000 0.330000 0.330000
+map_Kd herman_kanis_house/_Wood_Floor_2.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd herman_kanis_house/Translucent_Glass_Tinted.jpg
+
+newmtl Wood_Floor
+Ka 0.000000 0.000000 0.000000
+Kd 0.807843 0.788235 0.768627
+Ks 0.330000 0.330000 0.330000
+map_Kd herman_kanis_house/Wood_Floor.jpg
+
+newmtl _Wood_Floor_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.254902 0.172549 0.098039
+Ks 0.330000 0.330000 0.330000
+map_Kd herman_kanis_house/_Wood_Floor_1.jpg
+
+newmtl Steel_Brushed_Stainless
+Ka 0.000000 0.000000 0.000000
+Kd 0.717647 0.733333 0.745098
+Ks 0.330000 0.330000 0.330000
+map_Kd herman_kanis_house/Steel_Brushed_Stainless.jpg
+
+newmtl Brick_Tumbled
+Ka 0.000000 0.000000 0.000000
+Kd 0.529412 0.517647 0.517647
+Ks 0.330000 0.330000 0.330000
+map_Kd herman_kanis_house/Brick_Tumbled.jpg
+
+newmtl _Wood_Floor_3
+Ka 0.000000 0.000000 0.000000
+Kd 0.709804 0.568627 0.447059
+Ks 0.330000 0.330000 0.330000
+map_Kd herman_kanis_house/_Wood_Floor_3.jpg
+
