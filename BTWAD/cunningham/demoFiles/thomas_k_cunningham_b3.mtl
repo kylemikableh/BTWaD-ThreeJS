@@ -1,0 +1,46 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Fencing_Wood_Old
+Ka 0.000000 0.000000 0.000000
+Kd 0.486275 0.474510 0.466667
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b3/Fencing_Wood_Old.jpg
+
+newmtl Roofing_Shingles_Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.407843 0.380392
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b3/Roofing_Shingles_Asphalt.jpg
+
+newmtl initialShadingGroup
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.498039 0.498039
+Ks 0.330000 0.330000 0.330000
+
+newmtl Wood_Lumber_ButtJoined
+Ka 0.000000 0.000000 0.000000
+Kd 0.643137 0.596078 0.439216
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b3/Wood_Lumber_ButtJoined.jpg
+
+newmtl _Cladding_Weathered_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b3/_Cladding_Weathered_1.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.480000
+map_Kd thomas_k_cunningham_b3/Translucent_Glass_Tinted.jpg
+
+newmtl _Fencing_Wood_Old_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.466667 0.454902 0.447059
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b3/_Fencing_Wood_Old_1.jpg
+

@@ -1,0 +1,46 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Cladding_Siding_White
+Ka 0.000000 0.000000 0.000000
+Kd 0.807843 0.807843 0.807843
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b1/Cladding_Siding_White.jpg
+
+newmtl Roofing_Shingles_Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.407843 0.380392
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b1/Roofing_Shingles_Asphalt.jpg
+
+newmtl initialShadingGroup
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.498039 0.498039
+Ks 0.330000 0.330000 0.330000
+
+newmtl Stone_Vein_Gray
+Ka 0.000000 0.000000 0.000000
+Kd 0.650980 0.647059 0.647059
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b1/Stone_Vein_Gray.jpg
+
+newmtl Brick_Rough_Dark
+Ka 0.000000 0.000000 0.000000
+Kd 0.368627 0.301961 0.207843
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b1/Brick_Rough_Dark.jpg
+
+newmtl Cladding_Stucco_White
+Ka 0.000000 0.000000 0.000000
+Kd 0.784314 0.784314 0.784314
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b1/Cladding_Stucco_White.jpg
+
+newmtl Translucent_Glass_Tinted
+Ka 0.000000 0.000000 0.000000
+Kd 0.031373 0.788235 0.945098
+Ks 0.330000 0.330000 0.330000
+d 0.860000
+map_Kd thomas_k_cunningham_b1/Translucent_Glass_Tinted.jpg
+

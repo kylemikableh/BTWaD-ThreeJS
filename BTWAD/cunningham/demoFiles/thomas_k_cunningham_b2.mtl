@@ -1,0 +1,80 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Fencing_Wood_Old
+Ka 0.000000 0.000000 0.000000
+Kd 0.458824 0.443137 0.435294
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/Fencing_Wood_Old.jpg
+
+newmtl Roofing_Shingles_Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.439216 0.411765 0.384314
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/Roofing_Shingles_Asphalt.jpg
+
+newmtl initialShadingGroup
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.498039 0.498039
+Ks 0.330000 0.330000 0.330000
+
+newmtl Cladding_Weathered
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/Cladding_Weathered.jpg
+
+newmtl Color_M09
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl _Cladding_Weathered_3
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/_Cladding_Weathered_3.jpg
+
+newmtl _Cladding_Weathered_4
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/_Cladding_Weathered_4.jpg
+
+newmtl _Cladding_Weathered_7
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/_Cladding_Weathered_7.jpg
+
+newmtl _Fencing_Wood_Old_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.439216 0.423529 0.419608
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/_Fencing_Wood_Old_1.jpg
+
+newmtl _Cladding_Weathered_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/_Cladding_Weathered_2.jpg
+
+newmtl _Cladding_Weathered_6
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/_Cladding_Weathered_6.jpg
+
+newmtl _Cladding_Weathered_5
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/_Cladding_Weathered_5.jpg
+
+newmtl _Cladding_Weathered_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.376471
+Ks 0.330000 0.330000 0.330000
+map_Kd thomas_k_cunningham_b2/_Cladding_Weathered_1.jpg
+
