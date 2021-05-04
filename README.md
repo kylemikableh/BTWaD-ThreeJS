@@ -45,7 +45,7 @@ Most code in the viewer.js does not need to be changed. This is what should be c
 * Inside the ```function init()``` function, the function call to ```loadModel``` should be copied for as many models that will be loaded. The ```path``` argument should be changed to reflect the file location of the .obj, **excluding** the file extension. For example, if the .obj had the name of house1.obj, the path would only contain ```house1```. The next three arguments are the coordinates of where the object will be placed (x, y, z). The three arguments afterwards are the scale of which you would like the models loaded (x, y, z). These arguments will have to be adjusted depending the scale of which the model was done in. The next argument is the rotation in degress. Lastly, the final argument is a name you would like to give the model. This is **not** the id from earlier. Here is an example line: ```loadModel(manager,'./demoFiles/george_ball_barn',3000,0,6000,2,2,2,0,'house2');```
 * Inside the ```function moveCameraTo(id)``` function, there should be an ```if``` statement for each ```id``` that was created in the ```index.php```. Inside each if statement the ``camX`` and ```camZ``` should have the position of the camera for the respective model. Here is an example if the ```id``` was **house1**, at the position of -3000x and 0z:
 ```
-if(id == "george-ball-house") {
+if(id == "house1") {
         camX = -3000;
         camZ = 0;
     }
