@@ -22,13 +22,13 @@ This project used very similar code in each folder because by design you can cop
 
 ## index.php
 Most code in the index.php does not need to be changed, but rather the content. This is what you should change:
-* Anywhere you see text relating to the title of the page. Simply replace inside the tags the correct Title. This includes the **meta** tags, the **title** tag, and the **h1** tag.
-* The first **<button>** tag should have the link changed to the URL of the page you would like the button to redirect the user.
-* The list of **<button>** tags inside the **main-content** tag should be modified to reflect the amout of models that will be on the page. For example, if you intend to have two models, there should be two buttons here. The _id_ needs to be changed to a unique name for it, ending in **-button**. This same _id_ will need to be reused later on. Inside the **onClick** of the button, the text needs to be changed to the _id_ from before **_minus the -button_**. As an example, if you name the _id_ in the **id** field to "house1-button", the **onClick** should just contain "house1". The content name of the button should lastly be changed to what you want the button to say to users.
-* The first **button** should contain the class of "active".
-* Each **div** after the button group should have the _id_ of what you gave the buttons _id_ before. Thus, if there were two buttons with the ids of "house1-button" and "house2-button", two divs should be copied with the ids of "house1" and "house2"
-* The **h1** content should be replace with the name of the building you would like users to see
-* The **p** tag should have the content of what you want the users to read. If you want a superposition number, add the ```<sup>1</sup>``` tag and replace the number with the respective number.
+* Anywhere you see text relating to the title of the page. Simply replace inside the tags the correct Title. This includes the ```<meta>``` tags, the ```<title>``` tag, and the ```<h1>``` tag.
+* The first ```<button>``` tag should have the link changed to the URL of the page you would like the button to redirect the user.
+* The list of ```<button>``` tags inside the ```main-content``` tag should be modified to reflect the amout of models that will be on the page. For example, if you intend to have two models, there should be two buttons here. The ```id``` needs to be changed to a unique name for it, ending in ```-button```. This same ```id``` will need to be reused later on. Inside the ```onClick=""``` of the button, the text needs to be changed to the ```id``` from before **_minus the -button_**. As an example, if you name the ```id``` in the ```id``` field to ```'house1-button'```, the ```onClick=''``` should just contain ```house1```. The content name of the button should lastly be changed to what you want the button to say to users.
+* The first ```<button>``` should contain the class of ```active```.
+* Each ```<div>``` after the button group should have the ```id``` of what you gave the buttons ```id``` before. Thus, if there were two buttons with the ids of ```house1-button``` and ```house2-button```, two divs should be copied with the ids of ```house1``` and ```house2```.
+* The ``<h1>`` content should be replace with the name of the building you would like users to see
+* The ``<p>`` tag should have the content of what you want the users to read. If you want a superposition number, add the ```<sup>1</sup>``` tag and replace the number with the respective number.
 * In the ```<a href link="">``` tag, the link should be replaced to reflect the permalink to where the image was retrieved from. The ```src=""``` should be replaced to the filename of the img that is put in the **/img/** folder
 * The ```alt=""``` should be replaced to reflect the name of the image for screen readers.
 * Lastly, if sources were referenced there should be a ```p``` tag after the ```<img>``` tag that contains the references.
