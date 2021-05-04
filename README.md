@@ -17,6 +17,9 @@ This project uses [PHP](https://www.php.net/) files instead of [HTML](https://ht
 [JavaScript](https://www.javascript.com/) is a scripting language for web browsers that allows for many interactive features in the web browser. Three.js is written in JavaScript and thus must be used in JavaScript. JavaScript basics can also be found on [W3Schools](https://www.w3schools.com/html/html_basic.asp).
 
 # Overview
+How does this project work?
+* This project simply allows for models to be loaded together in one plane, with repeating grass textures to simulate the ground. The "Toggle Flood" button simply loads a plane geometry with the texture of water and a water normals texture to allow for proper shadows on the water. The plane is moved up and down, simulating water flooding the buildings. The index.php allows for content and details be loaded when the user wants to view a specific building.
+
 This project used very similar code in each folder because by design you can copy the directory of one page (e.g. ball) and change the names, titles, facts, models, and images. 
 * The folders contain an **index.php** which contains all the HTML for that page. This will need to be changes with details below.
 * The folder also contains an **index.css** file. This is for styling, but does not need to be changed. 
