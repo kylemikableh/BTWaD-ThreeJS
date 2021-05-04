@@ -4,6 +4,9 @@ Before There Was a Dam Project 3D model interactive viewer with information on h
 ## Three.js
 The [Three.js project](https://threejs.org/) is a library written in JavaScript that allows developers to use 3D models in a webbrowser with many customizations. Detailed examples and documentation are located here and is the backbone of this project
 
+## Bootstrap 4
+The [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) library is a library that allows for a responsive, modern UI that makes designing a web page much easier by removing the need to design custom CSS.
+
 ## SketchUp and Obj files
 This project used [SketchUp](https://www.sketchup.com/) to texture the models. The Three.js part of this project uses .obj files instead of the standard .skp which comes from the SketchUp program. Thus, an [online converter](https://www.sketchup.com/) can be used to convert files from SketchUp into the required .obj file
 
@@ -33,3 +36,18 @@ Most code in the index.php does not need to be changed, but rather the content. 
 * The ```alt=""``` should be replaced to reflect the name of the image for screen readers.
 * Lastly, if sources were referenced there should be a ```p``` tag after the ```<img>``` tag that contains the references.
 In the end, there should be a div with all the information for each building. The ```id``` used for each div will be important in the **viewer.js**.
+
+## viewer.js
+Most code in the viewer.js does not need to be changed. This is what should be changed:
+* Inside the ```function init()``` function, the function call to ```loadModel``` should be copied for as many models that will be loaded. The ```path``` argument should be changed to reflect the file location of the .obj, **excluding** the file extension. For example, if the .obj had the name of house1.obj, the path would only contain ```house1```. The next three arguments are the coordinates of where the object will be placed (x, y, z). The three arguments afterwards are the scale of which you would like the models loaded (x, y, z). These arguments will have to be adjusted depending the scale of which the model was done in. The next argument is the rotation in degress. Lastly, the final argument is a name you would like to give the model. This is **not** the id from earlier. Here is an example line: ```loadModel(manager,'./demoFiles/george_ball_barn',3000,0,6000,2,2,2,0,'house2');```
+* Inside the ```function moveCameraTo(id)``` function, there should be an ```if``` statement for each ```id``` that was created in the ```index.php```. Inside each if statement the ``camX`` and ```camZ``` should have the position of the camera for the respective model. Here is an example if the ```id``` was **house1**, at the position of -3000x and 0z:
+```
+if(id == "george-ball-house") {
+        camX = -3000;
+        camZ = 0;
+    }
+```
+* Lastly, inside the ```function showDivWithID(id)``` function, the array called ```divs``` should contain every ```id``` from the index.php. 
+
+# Conclusion
+After following the instructions, any models should be able to be loaded. Tweaks to the viewer.js might be required if you want more customizations in the future. All example code used for the project are linked to where the example came from about the function. 
