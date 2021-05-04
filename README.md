@@ -8,7 +8,7 @@ The [Three.js project](https://threejs.org/) is a library written in JavaScript 
 The [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) library is a library that allows for a responsive, modern UI that makes designing a web page much easier by removing the need to design custom CSS.
 
 ## SketchUp and Obj files
-This project used [SketchUp](https://www.sketchup.com/) to texture the models. The Three.js part of this project uses .obj files instead of the standard .skp which comes from the SketchUp program. Thus, an [online converter](https://www.sketchup.com/) can be used to convert files from SketchUp into the required .obj file
+This project used [SketchUp](https://www.sketchup.com/) to texture the models. The Three.js part of this project uses .obj files instead of the standard .skp which comes from the SketchUp program. Thus, an [online converter](https://anyconv.com/skp-to-obj-converter/) can be used to convert files from SketchUp into the required .obj file
 
 ## HTML Basics
 This project uses [PHP](https://www.php.net/) files instead of [HTML](https://html.spec.whatwg.org/) files, but does not use any PHP functions. Thus, for the front-end User Interface, simple HTML knowledge and [CSS](https://www.w3.org/TR/CSS/#css) knowledge for styling is required to edit and make new pages, but these can be found on [W3Schools](https://www.w3schools.com/html/html_basic.asp).
