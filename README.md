@@ -2,7 +2,7 @@
 Before There Was a Dam Project 3D model interactive viewer with information on how it works and how to add your own models to the layout.
 
 ## Three.js
-The [Three.js project](https://threejs.org/) is a library written in JavaScript that allows developers to use 3D models in a webbrowser with many customizations. Detailed examples and documentation are located here and is the backbone of this project
+The [Three.js project](https://threejs.org/) is a library written in JavaScript that allows developers to use 3D models in a webbrowser with many customizations. Detailed examples and documentation are located here and is the backbone of this project. In order to use this project, the ```/jsm/``` folder is requred from the Three.js project to be at the root of the project directory.
 
 ## Bootstrap 4
 The [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) library is a library that allows for a responsive, modern UI that makes designing a web page much easier by removing the need to design custom CSS.
